@@ -48,7 +48,7 @@ public class IncomeStorage {
         System.out.println("income removed");
     }
     public void searchIncome(String SId){ //SId = SearchId    ,  en Sträng som anges av user input och som används i denna metod för att söka på ett specifikt id inom hashmap
-        System.out.println(incomeMap.get(SId));
+        //inte hittat lösningen ännu
     }
 
 

@@ -1,5 +1,15 @@
 {
   "0": {
-    "amount": 0
+    "amount": 0.0
+  },
+  "Alot": {
+    "id": "Alot",
+    "amount": 2000.0,
+    "date": "25/11-23"
+  },
+  "nybbe": {
+    "id": "nybbe",
+    "amount": 52000.0,
+    "date": "25/3-23"
   }
 }
