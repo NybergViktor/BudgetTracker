@@ -15,16 +15,18 @@ public class BudgetTracker {
         IncomeStorage incomeStorage = new IncomeStorage();
         incomeStorage.readFile();
         //ExpenseStorage expenseStorage = new ExpenseStorage();
-        User user = new User("User", "1");
+        User user = new User("viktor", "nyberg");
+
         Income income1 = new Income(5000, "25/10-23", "nothing");
         incomeStorage.addIncome(income1);
         Income income2 = new Income(50000, "25/6-23", "nyberg");
         incomeStorage.addIncome(income2);
         incomeStorage.saveFile();
+
+        System.out.println("search income");
         incomeStorage.readFile();
-        incomeStorage.removeIncome("nyberg");
-        incomeStorage.saveFile();
-        incomeStorage.readFile();
+        String stId = scanner.nextLine();
+        incomeStorage.searchIncome(stId);
 
         /*
         System.out.println("Hello and Welcome!");

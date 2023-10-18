@@ -34,18 +34,21 @@ public class IncomeStorage {
         FileWriter fw = new FileWriter(new File(fileName));
         gson.toJson(incomeMap, fw);
         fw.close();
-        System.out.println("income!");
+        System.out.println("incomes saved!");
 
         //läs info om put hur man anger key
         //testa ändra user.getUsername till setId för att ändra key (rad 30)
     }
     public void addIncome(Income income) throws IOException{
         incomeMap.put(income.getId(), income);
-        System.out.println("added");
+        System.out.println("income added");
     }
     public void removeIncome(String i){
         incomeMap.remove(i);
-        System.out.println("removed");
+        System.out.println("income removed");
+    }
+    public void searchIncome(String SId){ //SId = SearchId    ,  en Sträng som anges av user input och som används i denna metod för att söka på ett specifikt id inom hashmap
+        System.out.println(incomeMap.get(SId));
     }
 
 

@@ -9,6 +9,7 @@ public class User {
     public User(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.fullName = firstName + " " + lastName;
     }
     public void setFullName(){
         this.fullName = firstName + " " + lastName;
@@ -17,6 +18,14 @@ public class User {
 
     public String getFullName() {
         return fullName;
+    }
+    public void changeFirstName(String newFirstName){
+        this.firstName = newFirstName;
+        this.fullName = newFirstName + " " + lastName;
+    }
+    public void changeLastName(String newLastName){
+        this.lastName = newLastName;
+        this.fullName = firstName + " " + newLastName;
     }
 
 }
