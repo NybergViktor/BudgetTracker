@@ -5,21 +5,26 @@ import java.util.Scanner;
 
 public class BudgetTracker {
 
-    public BudgetTracker(){
 
-    }
+//to do
+    //read a list of all incomes
+    //search income
 
     public static void main(String[] args) throws IOException {
-        Income income = new Income("Car", 20000);
-        //income.setCatTest("Salary");
-        //income.setAmount(2001);
-        System.out.println("Amount: " + income.getAmount() + " category: " + income.getCatTest());
         Scanner scanner = new Scanner(System.in);
         IncomeStorage incomeStorage = new IncomeStorage();
-        ExpenseStorage expenseStorage = new ExpenseStorage();
         incomeStorage.readFile();
-        incomeStorage.saveFile(income);
-
+        //ExpenseStorage expenseStorage = new ExpenseStorage();
+        User user = new User("User", "1");
+        Income income1 = new Income(5000, "25/10-23", "nothing");
+        incomeStorage.addIncome(income1);
+        Income income2 = new Income(50000, "25/6-23", "nyberg");
+        incomeStorage.addIncome(income2);
+        incomeStorage.saveFile();
+        incomeStorage.readFile();
+        incomeStorage.removeIncome("nyberg");
+        incomeStorage.saveFile();
+        incomeStorage.readFile();
 
         /*
         System.out.println("Hello and Welcome!");

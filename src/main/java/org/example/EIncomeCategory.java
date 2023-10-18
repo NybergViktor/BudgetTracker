@@ -2,7 +2,6 @@ package org.example;
 
 public enum EIncomeCategory {
 
-    SALARY,
-    OTHER;
+    SALARY, SOLDITEM, SECONDSALARY, OTHER;
 
 }

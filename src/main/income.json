@@ -1,11 +1,12 @@
 {
-  "Test": {
-    "amount": 2000
+  "0": {
+    "id": "0",
+    "amount": 0.0,
+    "date": "0/0-0"
   },
-  "Viktor": {
-    "amount": 3000
-  },
-  "Testare": {
-    "amount": 5000
+  "nothing": {
+    "id": "nothing",
+    "amount": 5000.0,
+    "date": "25/10-23"
   }
 }

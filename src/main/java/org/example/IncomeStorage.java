@@ -11,34 +11,44 @@ import java.util.Map;
 public class IncomeStorage {
 
 
-    private Map<String, Income> incomeList;
-    //private ArrayList<Income> incomeList = new ArrayList<>();
+
+    private Map<String, Income> incomeMap;
+
 
     private String fileName = "src/main/income.json";
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-    public IncomeStorage(){
-    }
-
-
-    public void readFile() throws IOException{
+    public void readFile() throws IOException {
         Type type = new TypeToken<Map<String, Income>>(){}.getType();
-        Reader reader = new FileReader(fileName);
-        incomeList = gson.fromJson(reader,type);
+        Reader reader = new FileReader(new File(fileName));
+        incomeMap = gson.fromJson(reader,type);
 
         System.out.println("Income List: ");
-        for(String name : incomeList.keySet()){
-            System.out.println("Key: " + name);
+        for( String name : incomeMap.keySet()){
+            System.out.println("ID: " + name);
         }
     }
-    public void saveFile(Income income) throws IOException {//add income /add expense (skapa ny metod och döp till add)
-        incomeList.put(income.getCatTest(), income);
+    public void saveFile() throws IOException {//add income /add expense (skapa ny metod och döp till add)
+
+
         FileWriter fw = new FileWriter(new File(fileName));
-        gson.toJson(incomeList, fw);
+        gson.toJson(incomeMap, fw);
         fw.close();
-        System.out.println("Income saved!");
+        System.out.println("income!");
 
         //läs info om put hur man anger key
         //testa ändra user.getUsername till setId för att ändra key (rad 30)
     }
+    public void addIncome(Income income) throws IOException{
+        incomeMap.put(income.getId(), income);
+        System.out.println("added");
+    }
+    public void removeIncome(String i){
+        incomeMap.remove(i);
+        System.out.println("removed");
+    }
+
+
+
+
 }
