@@ -20,10 +20,17 @@ public class ExpenseStorage {
         Reader reader = new FileReader(new File(fileName));
         expenseMap = gson.fromJson(reader,type);
 
+    }
+    public void listOfExpense(){
         System.out.println("Expense List: ");
-        for( String name : expenseMap.keySet()){
-            System.out.println("ID: " + name);
+
+
+        for (int i = 1; i < expenseMap.size(); i++){
+            String a = Integer.toString(i);
+            System.out.println("Expense with ID: " + a);
+            System.out.println(expenseMap.get(a).toString());
         }
+
     }
     public void saveFile() throws IOException {//add income /add expense (skapa ny metod och döp till add)
 
@@ -33,8 +40,7 @@ public class ExpenseStorage {
         fw.close();
         System.out.println("expenses saved!");
 
-        //läs info om put hur man anger key
-        //testa ändra user.getUsername till setId för att ändra key (rad 30)
+
     }
     public void addExpense(Expense expense) throws IOException{
         expenseMap.put(expense.getId(), expense);
@@ -44,7 +50,22 @@ public class ExpenseStorage {
         expenseMap.remove(i);
         System.out.println("expense removed");
     }
+    public void removeAllExpenses(){
+        for (int i = 1; i < expenseMap.size(); i ++){
+            String a = Integer.toString(i);
+            expenseMap.remove(a);
+        }
+    }
+    public int getSize(){
+        return expenseMap.size();
+    }
     public void searchExpense(String SId){ //SId = SearchId    ,  en Sträng som anges av user input och som används i denna metod för att söka på ett specifikt id inom hashmap
-        //inte hittat lösningen ännu
+
+        if( expenseMap.containsKey(SId)) {
+            System.out.println("Expense with ID: " + SId);
+            System.out.println(expenseMap.get(SId).toString());
+        }else {
+            System.out.println("Can't find key: " + SId);
+        }
     }
 }

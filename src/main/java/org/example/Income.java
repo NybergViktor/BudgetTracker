@@ -17,6 +17,9 @@ private String id;
     }
 
 
-
+    @Override
+    public String toString(){
+        return super.toString() + " ID: " + getId();
+    }
 }
 

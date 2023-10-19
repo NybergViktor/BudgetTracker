@@ -23,11 +23,19 @@ public class IncomeStorage {
         Reader reader = new FileReader(new File(fileName));
         incomeMap = gson.fromJson(reader,type);
 
-        System.out.println("Income List: ");
-        for( String name : incomeMap.keySet()){
-            System.out.println("ID: " + name);
-        }
     }
+    public void listOfIncome(){
+        System.out.println("Income List: ");
+
+
+        for (int i = 1; i < incomeMap.size(); i++){
+            String a = Integer.toString(i);
+            System.out.println("Income with ID: " + a);
+            System.out.println(incomeMap.get(a).toString());
+        }
+
+    }
+
     public void saveFile() throws IOException {//add income /add expense (skapa ny metod och döp till add)
 
 
@@ -36,8 +44,7 @@ public class IncomeStorage {
         fw.close();
         System.out.println("incomes saved!");
 
-        //läs info om put hur man anger key
-        //testa ändra user.getUsername till setId för att ändra key (rad 30)
+
     }
     public void addIncome(Income income) throws IOException{
         incomeMap.put(income.getId(), income);
@@ -47,8 +54,25 @@ public class IncomeStorage {
         incomeMap.remove(i);
         System.out.println("income removed");
     }
+    public void removeAllIncomes(){
+        for (int i = 1; i < incomeMap.size(); i ++){
+            String a = Integer.toString(i);
+            incomeMap.remove(a);
+        }
+
+    }
+    public int getSize(){
+        return incomeMap.size();
+    }
     public void searchIncome(String SId){ //SId = SearchId    ,  en Sträng som anges av user input och som används i denna metod för att söka på ett specifikt id inom hashmap
         //inte hittat lösningen ännu
+
+        if( incomeMap.containsKey(SId)) {
+            System.out.println("Income with ID: " + SId);
+            System.out.println(incomeMap.get(SId).toString());
+        }else {
+            System.out.println("Can't find key: " + SId);
+        }
     }
 
 
