@@ -13,18 +13,20 @@ public class User {
         this.lastName = lastName;
         this.fullName = firstName + " " + lastName;
     }
+
     public void setFullName(){
         this.fullName = firstName + " " + lastName;
     }
 
-
     public String getFullName() {
         return fullName;
     }
+
     public void changeFirstName(String newFirstName){
         this.firstName = newFirstName;
         this.fullName = newFirstName + " " + lastName;
     }
+
     public void changeLastName(String newLastName){
         this.lastName = newLastName;
         this.fullName = firstName + " " + newLastName;
@@ -36,7 +38,7 @@ public class User {
         //expS.removeAllExpenses();
         incS.removeAllIncomes();
         System.out.println("All incomes have been removed!");
-        Income defaultIncome = new Income(0,"", "0");
+        Income defaultIncome = new Income(0,"", "0", "");
         incS.addIncome(defaultIncome);
     }
 

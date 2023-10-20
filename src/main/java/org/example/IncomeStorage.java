@@ -61,16 +61,16 @@ public class IncomeStorage {
         }
 
     }
-    public int getSize(){
+    public int getIncomeMapSize(){
         return incomeMap.size();
     }
-    public void searchIncome(String SId){ //SId = SearchId    ,  en Sträng som anges av user input och som används i denna metod för att söka på ett specifikt id inom hashmap
-        //inte hittat lösningen ännu
+    public void searchIncome(String SId){ //SId = SearchId
+        //En Sträng som anges av user input och som används i denna metod för att söka på ett specifikt id inom hashmap
 
-        if( incomeMap.containsKey(SId)) {
+        if(incomeMap.containsKey(SId)) {
             System.out.println("Income with ID: " + SId);
             System.out.println(incomeMap.get(SId).toString());
-        }else {
+        } else {
             System.out.println("Can't find key: " + SId);
         }
     }
