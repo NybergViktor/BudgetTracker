@@ -40,6 +40,7 @@ public class User {
         System.out.println("All incomes have been removed!");
         Income defaultIncome = new Income(0,"", "0", "");
         incS.addIncome(defaultIncome);
+
     }
 
 }
