@@ -9,14 +9,14 @@ import java.lang.reflect.Type;
 import java.util.Map;
 
 public class ExpenseStorage {
-    private Map<String, Expense> expenseMap;
+    private Map<Integer, Expense> expenseMap;
 
 
     private String fileName = "src/main/expense.json";
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     public void readFile() throws IOException {
-        Type type = new TypeToken<Map<String, Expense>>(){}.getType();
+        Type type = new TypeToken<Map<Integer, Expense>>(){}.getType();
         Reader reader = new FileReader(new File(fileName));
         expenseMap = gson.fromJson(reader,type);
 
@@ -32,7 +32,7 @@ public class ExpenseStorage {
         }
 
     }
-    public void saveFile() throws IOException {//add income /add expense (skapa ny metod och döp till add)
+    public void saveFile() throws IOException {
 
 
         FileWriter fw = new FileWriter(new File(fileName));
@@ -43,10 +43,10 @@ public class ExpenseStorage {
 
     }
     public void addExpense(Expense expense) throws IOException{
-        expenseMap.put(expense.getId(), expense);
+        expenseMap.put(expense.getNewId(), expense);
         System.out.println("expense added");
     }
-    public void removeExpense(String i){
+    public void removeExpense(Integer i){
         expenseMap.remove(i);
         System.out.println("expense removed");
     }
@@ -56,14 +56,14 @@ public class ExpenseStorage {
             expenseMap.remove(a);
         }
     }
-    public int getSize(){
+    public int getExpenseMapSize(){
         return expenseMap.size();
     }
-    public void searchExpense(String SId){ //SId = SearchId    ,  en Sträng som anges av user input och som används i denna metod för att söka på ett specifikt id inom hashmap
+    public void searchExpense(Integer SId){ //SId = SearchId    ,  en Sträng som anges av user input och som används i denna metod för att söka på ett specifikt id inom hashmap
 
         if( expenseMap.containsKey(SId)) {
             System.out.println("Expense with ID: " + SId);
-            System.out.println(expenseMap.get(SId).toString());
+            System.out.println(expenseMap.get(SId));
         }else {
             System.out.println("Can't find key: " + SId);
         }

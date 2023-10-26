@@ -33,13 +33,15 @@ public class User {
     }
 
     public void removeUser() throws IOException {
-        //ExpenseStorage expS = new ExpenseStorage();
+        ExpenseStorage expS = new ExpenseStorage();
         IncomeStorage incS = new IncomeStorage();
-        //expS.removeAllExpenses();
+        expS.removeAllExpenses();
         incS.removeAllIncomes();
-        System.out.println("All incomes have been removed!");
-        Income defaultIncome = new Income(0,"", "0", "");
+        System.out.println("All incomes and expenses have been removed!");
+        Income defaultIncome = new Income(0," ", "0");
+        Expense defaulExpense = new Expense(0," ", "0");
         incS.addIncome(defaultIncome);
+        expS.addExpense(defaulExpense);
 
     }
 
