@@ -20,9 +20,10 @@ public class BudgetTracker {
         ExpenseStorage expenseStorage = new ExpenseStorage();
         incomeStorage.readFile();
         expenseStorage.readFile();
+        boolean running = true;
 
         System.out.println("Hello and Welcome!");
-        while (true) {
+        while (running == true) {
             try {
                 System.out.println("What is your first name?");
                 String fName = scanner.nextLine();
@@ -54,6 +55,7 @@ public class BudgetTracker {
 
             switch (userAlt) {
                 case "1"://see monthly incomes
+
 
                 case "2"://see monthly expenses
                 case "3"://add new income
@@ -274,15 +276,16 @@ public class BudgetTracker {
                     User newUser = new User(fName, lName);
                     newUser.removeUser();
 
-                case "0"://exit programme
-                    break;
+                case "10"://See yearly incomes
+                case "11"://See yearly expenses
+                case "12"://See monthly incomes minus expenses
+                case "0"://exit
+                    running = false;
 
                 default:
                     System.out.println("Error, please choose an existing alternative!");
 
             }
-
-
         }
 
     }

@@ -11,7 +11,9 @@ public class Transaction {
 
         this.amount = amount;
         this.date = date;
+
     }
+
 
     @Override
     public String toString() {

@@ -35,9 +35,9 @@ private EExpenseCategory category;
         this.newId = setNewId();
         switch (category) {
             case "electricity":
-                this.category = EExpenseCategory.ELECTRICITYBILL;
+                this.category = EExpenseCategory.ELECTRICITY;
                 break;
-            case "sold item":
+            case "rent":
                 this.category = EExpenseCategory.RENT;
                 break;
 
