@@ -18,37 +18,11 @@ public class BudgetTracker {
         Scanner scanner = new Scanner(System.in);
         IncomeStorage incomeStorage = new IncomeStorage();
         ExpenseStorage expenseStorage = new ExpenseStorage();
-        //IncomeMonth incomeMonth = new IncomeMonth();
-        //ExpenseMonth expenseMonth = new ExpenseMonth();
         incomeStorage.readFile();
         expenseStorage.readFile();
-        //incomeStorage.addMonthsToMap();
-        //incomeMonth.readFile();
-
-
-        //Income income1 = new Income(5000, "25/10-23", "1", "salary", "january");
-        // incomeStorage.addIncome(income1);
-        //Income income2 = new Income(50000, "25/6-23", "2", "other", "february");
-        // incomeStorage.addAmountToMonth("january", 200.0);
-        //System.out.println(income1.getMonthToString());
-        //System.out.println(income2.getMonth());
-        //incomeStorage.addIncome(income2);
-        //incomeStorage.addAmountToMonth(income1.getMonthToString(), 500.0);
-        //incomeMonth.addMonthIncome(income1);
-        //incomeMonth.addMonthIncome(income2);
-        //Expense expense1 = new Expense(2000, "25/11-23", "1", "rent");
-        //expenseStorage.addExpense(expense1);
-        //Expense expense2 = new Expense(52000, "25/3-23", "2", "food");
-        //expenseStorage.addExpense(expense2);
-        //incomeStorage.saveFile();
-        // expenseStorage.saveFile();
-        //incomeStorage.listOfIncome();
-        //incomeStorage.listOfMonthIncome();
-        //incomeMonth.listOfYearIncome();
-
 
         System.out.println("Hello and Welcome!");
-        /*while (true) {
+        while (true) {
             try {
                 System.out.println("What is your first name?");
                 String fName = scanner.nextLine();
@@ -59,7 +33,7 @@ public class BudgetTracker {
             } catch (Exception e) {
                 System.out.println("Name should only contain letters, no numbers!");
             }
-        }*/
+        }
         while (true) {
             System.out.println("[1] See monthly incomes: (not active)\n" +
                     "[2] See monthly expenses: (not active)\n" +
