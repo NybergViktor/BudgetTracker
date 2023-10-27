@@ -11,7 +11,6 @@ import java.util.Map;
 public class ExpenseStorage {
     private Map<Integer, Expense> expenseMap;
 
-
     private String fileName = "src/main/expense.json";
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -26,25 +25,21 @@ public class ExpenseStorage {
 
 
         for (int i = 1; i < expenseMap.size(); i++){
-            String a = Integer.toString(i);
-            System.out.println("Expense with ID: " + a);
-            System.out.println(expenseMap.get(a).toString());
+            //String a = Integer.toString(i);
+            System.out.println("Expense with ID: " + i);
+            System.out.println(expenseMap.get(i).toString());
         }
 
     }
     public void saveFile() throws IOException {
-
-
         FileWriter fw = new FileWriter(new File(fileName));
         gson.toJson(expenseMap, fw);
         fw.close();
         System.out.println("expenses saved!");
-
-
     }
     public void addExpense(Expense expense) throws IOException{
         expenseMap.put(expense.getNewId(), expense);
-        System.out.println("expense added");
+        System.out.println("income added");
     }
     public void removeExpense(Integer i){
         expenseMap.remove(i);
@@ -52,8 +47,8 @@ public class ExpenseStorage {
     }
     public void removeAllExpenses(){
         for (int i = 1; i < expenseMap.size(); i ++){
-            String a = Integer.toString(i);
-            expenseMap.remove(a);
+            //String a = Integer.toString(i);
+            expenseMap.remove(i);
         }
     }
     public int getExpenseMapSize(){

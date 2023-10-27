@@ -1,38 +1,25 @@
 package org.example;
 
-public class Expense extends Transaction{
+public class Expense extends Transaction {
 
-    //private String id;
-private EExpenseCategory category;
+    private EExpenseCategory category;
+
 
     public int getNewId() {
-
         return newId;
     }
-
     public int setNewId() {
         newId += 1;
         this.newId = newId;
         return newId;
     }
-    private static double jan;
-    private static double feb;
-    private static double mar;
-    private static double apr;
-    private static double may;
-    private static double jun;
-    private static double jul;
-    private static double aug;
-    private static double sep;
-    private static double oct;
-    private static double now;
-    private static double dec;
 
-    private int newId = 0;
+    private int newId;
 
     public Expense(double amount, String date, String category) {
         super(amount, date);
         this.newId = setNewId();
+
         switch (category) {
             case "electricity":
                 this.category = EExpenseCategory.ELECTRICITY;
@@ -40,7 +27,6 @@ private EExpenseCategory category;
             case "rent":
                 this.category = EExpenseCategory.RENT;
                 break;
-
             case "food":
                 this.category = EExpenseCategory.FOOD;
                 break;
@@ -48,10 +34,12 @@ private EExpenseCategory category;
                 this.category = EExpenseCategory.OTHERS;
                 break;
         }
+        /*
         switch (date) {
             case "january":
                 //this.month = EMonths.FEBRUARY;
-                feb += amount;
+                //eYear.setJan( amount);
+
                 break;
             case "mars":
                 //this.month = EMonths.MARS;
@@ -94,30 +82,18 @@ private EExpenseCategory category;
                 dec += amount;
                 break;
             case "year":
-                jan += amount;
-                feb += amount;
-                mar += amount;
-                apr += amount;
-                may += amount;
-                jun += amount;
-                jul += amount;
-                aug += amount;
-                sep += amount;
-                oct += amount;
-                now += amount;
-                dec += amount;
+
                 break;
         }
+
+         */
     }
+
     @Override
-    public String toString(){
-        return super.toString() + " ID: " + newId + " Category: " + getCategory();
+    public String toString() {
+        return super.toString() + " ID: " + getNewId() + " Category: " + getCategory();
     }
-/*
-    public String getId() {
-        return id;
-    }
-    */
+
 
     public EExpenseCategory getCategory() {
         return category;

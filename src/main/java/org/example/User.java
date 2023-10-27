@@ -4,6 +4,7 @@ import java.io.IOException;
 
 public class User {
 
+
     private String firstName;
     private String lastName;
     private String fullName;
@@ -38,8 +39,8 @@ public class User {
         expS.removeAllExpenses();
         incS.removeAllIncomes();
         System.out.println("All incomes and expenses have been removed!");
-        Income defaultIncome = new Income(0," ", "0");
-        Expense defaulExpense = new Expense(0," ", "0");
+        Income defaultIncome = new Income(0, "","" );
+        Expense defaulExpense = new Expense(0, "","");
         incS.addIncome(defaultIncome);
         expS.addExpense(defaulExpense);
 

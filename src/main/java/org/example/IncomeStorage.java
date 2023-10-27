@@ -11,52 +11,36 @@ import java.util.Map;
 public class IncomeStorage {
 
 
-
     private Map<Integer, Income> incomeMap;
-    private Map<String, Double> incomeMapMonth;
-
-
-    public void listOfMonthIncome() {
-        System.out.println("Month income List: ");
-
-        for (int i = 1; i < incomeMapMonth.size(); i++) {
-            String a = Integer.toString(i);
-            System.out.println("Income with ID: " + a);
-            System.out.println(incomeMapMonth.get(a).toString());
-        }
-    }
-
-    public void addAmountToMonth(String theMonth, double theAmount) {
-
-        double existingAmount = incomeMapMonth.get(theMonth);
-        incomeMapMonth.replace(theMonth, existingAmount, theAmount);
-        System.out.println("New amount for " + theMonth + " is: " + theAmount);
-    }
-
+    private double sum;
     private String fileName = "src/main/income.json";
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     public void readFile() throws IOException {
-        Type type = new TypeToken<Map<Integer, Income>>() {}.getType();
+        Type type = new TypeToken<Map<Integer, Income>>() {
+        }.getType();
         Reader reader = new FileReader(new File(fileName));
         incomeMap = gson.fromJson(reader, type);
-        //incomeMapMonth = gson.fromJson(reader,type);
+    }
+    public double calcAmount() throws IOException {
+        return incomeMap.values().stream().mapToDouble(Income::getAmount).sum();
+
+
+
     }
 
     public void listOfIncome() {
         System.out.println("Income List: ");
 
         for (int i = 1; i < incomeMap.size(); i++) {
-            String a = Integer.toString(i);
-            System.out.println("Income with ID: " + a);
-            System.out.println(incomeMap.get(a).toString());
+            System.out.println("Income with ID: " + i);
+            System.out.println(incomeMap.get(i));
         }
     }
 
     public void saveFile() throws IOException {
         FileWriter fw = new FileWriter(new File(fileName));
         gson.toJson(incomeMap, fw);
-        //gson.toJson(incomeMapMonth,fw);
         fw.close();
         System.out.println("incomes saved!");
     }
@@ -66,6 +50,7 @@ public class IncomeStorage {
         System.out.println("income added");
     }
 
+
     public void removeIncome(Integer i) {
         incomeMap.remove(i);
         System.out.println("income removed");
@@ -73,9 +58,25 @@ public class IncomeStorage {
 
     public void removeAllIncomes() {
         for (int i = 1; i < incomeMap.size(); i++) {
-            String a = Integer.toString(i);
-            incomeMap.remove(a);
+            //String a = Integer.toString(i);
+            incomeMap.remove(i);
         }
+    }
+
+    public void sumOfIncomes() {
+        double sum = 0;
+        for (int i = 1; i < incomeMap.size(); i++) {
+            if (incomeMap.containsKey("february")){  //key or value
+
+            } else {
+
+            }
+
+        }
+
+
+
+
     }
 
     public int getIncomeMapSize() {
@@ -83,7 +84,7 @@ public class IncomeStorage {
     }
 
     public void searchIncome(Integer SId) { //SId = SearchId
-        //En Sträng som anges av user input och som används i denna metod för att söka på ett specifikt id inom hashmap
+        //En integer som anges av user input och som används i denna metod för att söka på ett specifikt id inom hashmap
         if (incomeMap.containsKey(SId)) {
             System.out.println("Income with ID: " + SId);
             System.out.println(incomeMap.get(SId));
@@ -91,4 +92,8 @@ public class IncomeStorage {
             System.out.println("Can't find key: " + SId);
         }
     }
+
+
+    //skapa temporär map med alla värden från den månad man vill ha
+
 }
