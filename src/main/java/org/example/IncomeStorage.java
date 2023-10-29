@@ -7,12 +7,14 @@ import com.google.gson.reflect.TypeToken;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.Map;
+import java.util.Objects;
 
 public class IncomeStorage {
 
 
     private Map<Integer, Income> incomeMap;
-    private double sum;
+
+
     private String fileName = "src/main/income.json";
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -22,11 +24,9 @@ public class IncomeStorage {
         Reader reader = new FileReader(new File(fileName));
         incomeMap = gson.fromJson(reader, type);
     }
+
     public double calcAmount() throws IOException {
         return incomeMap.values().stream().mapToDouble(Income::getAmount).sum();
-
-
-
     }
 
     public void listOfIncome() {
@@ -66,15 +66,13 @@ public class IncomeStorage {
     public void sumOfIncomes() {
         double sum = 0;
         for (int i = 1; i < incomeMap.size(); i++) {
-            if (incomeMap.containsKey("february")){  //key or value
+            if (incomeMap.containsKey("february")) {  //key or value
 
             } else {
 
             }
 
         }
-
-
 
 
     }
@@ -93,7 +91,40 @@ public class IncomeStorage {
         }
     }
 
+    public void addAmountToMonth(String theMonth) {
+
+        double monthSum = 0;
+
+
+        for (int i = 1; i < incomeMap.size(); i++) {
+
+             if(Objects.equals(incomeMap.get(i).getMonth(), theMonth)) {
+
+                 double thisMonthAmount = incomeMap.get(i).getAmount();
+                 //monthMap.put(theMonth, thisMonthAmount);
+                 monthSum += thisMonthAmount;
+
+
+             }
+        }
+        System.out.println("The total incomes of " + theMonth + " is: " + monthSum);
+
+    }
+
+
+
 
     //skapa temporär map med alla värden från den månad man vill ha
+
+    /*
+            if(incomeMap.get(2) != null) {
+        }else{
+            System.out.println("nullpointer");
+        }
+
+ */
+
+    //incomeMap.values().stream().mapToDouble(Income::getAmount).sum();
+
 
 }

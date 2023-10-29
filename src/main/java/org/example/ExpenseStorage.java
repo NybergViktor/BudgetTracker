@@ -7,6 +7,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.Map;
+import java.util.Objects;
 
 public class ExpenseStorage {
     private Map<Integer, Expense> expenseMap;
@@ -62,5 +63,27 @@ public class ExpenseStorage {
         }else {
             System.out.println("Can't find key: " + SId);
         }
+    }
+    public double calcAmount() throws IOException {
+        return expenseMap.values().stream().mapToDouble(Expense::getAmount).sum();
+    }
+    public void addAmountToMonth(String theMonth) {
+
+        double monthSum = 0;
+
+
+        for (int i = 1; i < expenseMap.size(); i++) {
+
+            if(Objects.equals(expenseMap.get(i).getMonth(), theMonth)) {
+
+                double thisMonthAmount = expenseMap.get(i).getAmount();
+                //monthMap.put(theMonth, thisMonthAmount);
+                monthSum += thisMonthAmount;
+
+
+            }
+        }
+        System.out.println("The total expenses of " + theMonth + " is: " + monthSum);
+
     }
 }

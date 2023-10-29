@@ -16,8 +16,8 @@ public class Expense extends Transaction {
 
     private int newId;
 
-    public Expense(double amount, String date, String category) {
-        super(amount, date);
+    public Expense(double amount, String month, String category) {
+        super(amount, month);
         this.newId = setNewId();
 
         switch (category) {
@@ -31,62 +31,10 @@ public class Expense extends Transaction {
                 this.category = EExpenseCategory.FOOD;
                 break;
             case "other":
-                this.category = EExpenseCategory.OTHERS;
-                break;
-        }
-        /*
-        switch (date) {
-            case "january":
-                //this.month = EMonths.FEBRUARY;
-                //eYear.setJan( amount);
-
-                break;
-            case "mars":
-                //this.month = EMonths.MARS;
-                mar += amount;
-                break;
-            case "april":
-                //this.month = EMonths.APRIL;
-                apr += amount;
-                break;
-            case "may":
-                //this.month = EMonths.MAY;
-                may += amount;
-                break;
-            case "june":
-                //this.month = EMonths.JUNE;
-                jun += amount;
-                break;
-            case "july":
-                //this.month = EMonths.JULY;
-                jul += amount;
-                break;
-            case "august":
-                //this.month = EMonths.AUGUST;
-                aug += amount;
-                break;
-            case "september":
-                //this.month = EMonths.SEPTEMBER;
-                sep += amount;
-                break;
-            case "october":
-                //this.month = EMonths.OKTOBER;
-                oct += amount;
-                break;
-            case "november":
-                //this.month = EMonths.NOVEMBER;
-                now += amount;
-                break;
-            case "december":
-                //this.month = EMonths.DECEMBER;
-                dec += amount;
-                break;
-            case "year":
-
+                this.category = EExpenseCategory.OTHER;
                 break;
         }
 
-         */
     }
 
     @Override

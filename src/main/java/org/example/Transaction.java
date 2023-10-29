@@ -7,14 +7,17 @@ public class Transaction {
     }
 
     private double amount; //representerar inkomst/utgift
-    private String date; //representerar datum som inkomst/utgift görs
 
 
 
-    public Transaction(double amount, String date) {
+    private String month; //representerar datum som inkomst/utgift görs
+
+
+
+    public Transaction(double amount, String month) {
 
         this.amount = amount;
-        this.date = date;
+        this.month = month;
 
     }
 
@@ -22,8 +25,11 @@ public class Transaction {
     @Override
     public String toString() {
         return "{" +
-                "amount=" + amount +
-                ", date='" + date + '\'' +
-                '}';
+                "amount" + ": " +  amount + ", " +
+                "month" + ": " + month + ",";
+    }
+
+    public String getMonth() {
+        return month;
     }
 }

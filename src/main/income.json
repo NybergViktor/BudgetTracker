@@ -4,15 +4,39 @@
     "amount": 0.0
   },
   "1": {
-    "category": "SOLDITEM",
+    "category": "SALARY",
     "newId": 1,
     "amount": 500.0,
-    "date": "february"
+    "month": "february"
   },
   "2": {
     "category": "SOLDITEM",
     "newId": 2,
     "amount": 1000.0,
-    "date": "february"
+    "month": "nowember"
+  },
+  "3": {
+    "category": "OTHER",
+    "newId": 3,
+    "amount": 4000.0,
+    "month": "june"
+  },
+  "4": {
+    "category": "SALARY",
+    "newId": 4,
+    "amount": 500.0,
+    "month": "february"
+  },
+  "5": {
+    "category": "SOLDITEM",
+    "newId": 5,
+    "amount": 1000.0,
+    "month": "february"
+  },
+  "6": {
+    "category": "OTHER",
+    "newId": 6,
+    "amount": 4000.0,
+    "month": "june"
   }
 }
