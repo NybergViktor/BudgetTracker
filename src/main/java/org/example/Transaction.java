@@ -1,6 +1,6 @@
 package org.example;
 
-public class Transaction {
+public class Transaction { //parent klass som income och expense ärver från
 
     public double getAmount() {
         return amount;
@@ -8,9 +8,7 @@ public class Transaction {
 
     private double amount; //representerar inkomst/utgift
 
-
-
-    private String month; //representerar datum som inkomst/utgift görs
+    private String month; //representerar månad som inkomst/utgift görs
 
 
 

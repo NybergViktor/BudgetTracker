@@ -2,53 +2,5 @@
   "0": {
     "newId": 0,
     "amount": 0.0
-  },
-  "1": {
-    "category": "ELECTRICITY",
-    "newId": 1,
-    "amount": 2500.0,
-    "month": "february"
-  },
-  "2": {
-    "category": "RENT",
-    "newId": 2,
-    "amount": 1000.0,
-    "month": "february"
-  },
-  "3": {
-    "category": "FOOD",
-    "newId": 3,
-    "amount": 500.0,
-    "month": "february"
-  },
-  "4": {
-    "category": "FOOD",
-    "newId": 2,
-    "amount": 1000.0,
-    "month": "nowember"
-  },
-  "5": {
-    "category": "OTHER",
-    "newId": 3,
-    "amount": 4000.0,
-    "month": "june"
-  },
-  "6": {
-    "category": "OTHER",
-    "newId": 4,
-    "amount": 500.0,
-    "month": "february"
-  },
-  "7": {
-    "category": "RENT",
-    "newId": 5,
-    "amount": 1000.0,
-    "month": "february"
-  },
-  "8": {
-    "category": "OTHER",
-    "newId": 6,
-    "amount": 4000.0,
-    "month": "june"
   }
 }

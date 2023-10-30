@@ -1,6 +1,7 @@
 package org.example;
 
-public class Income extends Transaction {
+public class Income extends Transaction { //ärver från transaction och använder amount, month och lägger till
+    // eget som hör till income. som ID och category ihop med Enum category
 
     private EIncomeCategory category;
 
@@ -8,11 +9,7 @@ public class Income extends Transaction {
     public int getNewId() {
         return newId;
     }
-    public int setNewId() {
-        newId += 1;
-        this.newId = newId;
-        return newId;
-    }
+
 
 
     private static int newId;
@@ -22,7 +19,7 @@ public class Income extends Transaction {
 
         newId++;
 
-        switch (category) {
+        switch (category) { //ange category (ENUM) från user input
             case "salary":
                 this.category = EIncomeCategory.SALARY;
                 break;
@@ -42,7 +39,7 @@ public class Income extends Transaction {
 
 
     @Override
-    public String toString() {
+    public String toString() {//toString för att kunna printa hashmap med info istället för hashmap
         return super.toString() + " ID: " + getNewId() + ", Category: " + getCategory() +
                 '}';
     }

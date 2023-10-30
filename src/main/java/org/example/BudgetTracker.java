@@ -5,41 +5,22 @@ import java.util.Scanner;
 
 public class BudgetTracker {
 
-
-    /*
-    be user skriva månad
-hämta alla som är lika med den månaden
-här kanske du få spara ner i ny Map eventuellt
-räkna ihop alla värden för amount där månaden är samma tex September
-
-
-
-testa containsKey() alla värden har en egen nyckel
-     */
-
-//to do
-
-    //spara incomes i månader  -- doing
-    //läsa incomes för månader
-    //ta bort incomes i månader
-    // -//- samma för expenses
-
-
     public static void main(String[] args) throws IOException, InterruptedException {
         Scanner scanner = new Scanner(System.in);
+
+        //vill kunna kalla på metoder i incomestorage och expensestorage
         IncomeStorage incomeStorage = new IncomeStorage();
         ExpenseStorage expenseStorage = new ExpenseStorage();
+        //först måste vi read file för att läsa in vad som finns i income.json & expense.json
         incomeStorage.readFile();
         expenseStorage.readFile();
 
-        boolean running = false;
-        boolean intro = true;
+        boolean running = true;//denna loop håller main-programmet igång så länge man inte bryter den
 
 
         System.out.println("Hello and Welcome!");
 
-
-
+        //intro loop där vi lägger till user för och efternamn, samt skapar user
         while (true) {
             try {
                 System.out.println("What is your first name?");
@@ -52,8 +33,10 @@ testa containsKey() alla värden har en egen nyckel
                 System.out.println("Name should only contain letters, no numbers!");
             }
         }
-        while (intro == true) {
 
+        while (running = true) {
+
+            //meny med samtliga val som finns att välja
             System.out.println("\n" +
                     "[1] See monthly incomes\n" +//klar
                     "[2] See monthly expenses\n" +//klar
@@ -68,311 +51,314 @@ testa containsKey() alla värden har en egen nyckel
                     "[0] Exit\n" +//klar
                     " ");
 
-            intro = false;
-            running = true;
 
-        }
-        while (running = true) {
+            try {
 
-            int userAlt = Integer.parseInt(scanner.nextLine()); //parseInt pga att string scanner inte ska hoppas över, källa: https://www.freecodecamp.org/news/java-scanner-nextline-call-gets-skipped-solved/
+                int userAlt = Integer.parseInt(scanner.nextLine()); //parseInt pga att string scanner inte ska hoppas över, källa: https://www.freecodecamp.org/news/java-scanner-nextline-call-gets-skipped-solved/
 
-
-            if (userAlt == 0) {
-                //exit
-                running = false;
-                break;
-            } else if (userAlt == 1) {
-                //see monthly incomes
+                if (userAlt == 0) {
+                    //exit program
+                    System.out.println("Bye Bye!");
+                    running = false;
+                    break;
+                } else if (userAlt == 1) {
+                    //see monthly incomes
 
 
-                System.out.println("What month?\n" +
-
-                        "january\n" +
-                        "february\n" +
-                        "mars\n" +
-                        "april\n" +
-                        "may\n" +
-                        "june\n" +
-                        "july\n" +
-                        "august\n" +
-                        "september\n" +
-                        "october\n" +
-                        "november\n" +
-                        "december\n" +
-                        " ");
-
-                String thisMonth = scanner.nextLine();
-                thisMonth.toLowerCase();
-                if (thisMonth == "january" || thisMonth == "february" || thisMonth ==  "mars" || thisMonth ==  "april" || thisMonth ==  "may" || thisMonth ==  "june" || thisMonth ==  "july" || thisMonth == "august" || thisMonth ==  "september" || thisMonth ==  "october" || thisMonth ==  "nowember" || thisMonth ==  "december"){
+                    System.out.println("What month?\n" +
+                            //för att göra det ännu mer tydligt vad man ska skriva printas samtliga månader i en lista
+                            "january\n" +
+                            "february\n" +
+                            "mars\n" +
+                            "april\n" +
+                            "may\n" +
+                            "june\n" +
+                            "july\n" +
+                            "august\n" +
+                            "september\n" +
+                            "october\n" +
+                            "november\n" +
+                            "december\n" +
+                            " ");
 
 
-                    incomeStorage.addAmountToMonth(thisMonth);
-                } else{
-                    System.out.println(thisMonth);
-                    System.out.println("Something was spelled wrong..");
+                    String thisMonth = scanner.nextLine();
+                    thisMonth.toLowerCase(); //om någon trots listan ovan skriver med stor/stora bokstäver så gör vi om till små
+                    if (thisMonth.equals("january") || thisMonth.equals("february") || thisMonth.equals("mars") || thisMonth.equals("april") || thisMonth.equals("may") || thisMonth.equals("june") || thisMonth.equals("july") || thisMonth.equals("august") || thisMonth.equals("september") || thisMonth.equals("october") || thisMonth.equals("nowember") || thisMonth.equals("december")) {
+
+
+                        incomeStorage.addAmountToMonth(thisMonth);
+
+                        System.out.println("Loading Meny!");
+                        Thread.sleep(1500); // en 1,5 sek paus för skönare flöde i terminalen
+
+
+                    } else {
+                        //om man skriver något helt galet eller fel hamnar man gär och får en chans till
+                        System.out.println(thisMonth);
+                        System.out.println("Something was spelled wrong..");
+
+                    }
+
+
+                } else if (userAlt == 2) {//see monthly expenses
+
+                    //lite mindre kommentarer i detta alternativ då väldigt mycket är samma som i alt 1 men med expenses istället för incomes
+                    System.out.println("What month?\n" +
+
+                            "january\n" +
+                            "february\n" +
+                            "mars\n" +
+                            "april\n" +
+                            "may\n" +
+                            "june\n" +
+                            "july\n" +
+                            "august\n" +
+                            "september\n" +
+                            "october\n" +
+                            "november\n" +
+                            "december\n" +
+                            " ");
+
+                    String thisMonth = scanner.nextLine();
+                    thisMonth.toLowerCase();
+                    //försöker få med alla månader i en rad för att få mindre rader kod
+                    if (thisMonth.equals("january") || thisMonth.equals("february") || thisMonth.equals("mars") || thisMonth.equals("april") || thisMonth.equals("may") || thisMonth.equals("june") || thisMonth.equals("july") || thisMonth.equals("august") || thisMonth.equals("september") || thisMonth.equals("october") || thisMonth.equals("nowember") || thisMonth.equals("december")) {
+
+
+                        expenseStorage.addAmountToMonth(thisMonth);
+                        System.out.println("Loading Meny!");
+                        Thread.sleep(1500); // en 1,5 sek paus för skönare flöde i terminalen
+
+                    } else {
+                        System.out.println("Something was spelled wrong..");
+                    }
+
+
+                } else if (userAlt == 3) {//add new income
+
+                    //här skapar vi en ny income och då måste vi få lite info om vad det är för sorts income, vi frågar om category, amount, month
+
+
+
+
+
+                    System.out.println("Date? Answer with month\n" +
+                            //här är det viktigt att stava rätt, gör man det så fylls dateI med rätt info annars hamnar man i else och får en chans till
+
+                            "january\n" +
+                            "february\n" +
+                            "mars\n" +
+                            "april\n" +
+                            "may\n" +
+                            "june\n" +
+                            "july\n" +
+                            "august\n" +
+                            "september\n" +
+                            "october\n" +
+                            "november\n" +
+                            "december\n" +
+                            " ");
+
+
+                    //försöker få med alla månader i en rad för att få mindre rader kod
+                    String whatMonth = scanner.nextLine();
+                    whatMonth.toLowerCase();
+                    String dateI = "";
+                    if (whatMonth.equals("january") || whatMonth.equals("february") || whatMonth.equals("mars") || whatMonth.equals("april") || whatMonth.equals("may") || whatMonth.equals("june") || whatMonth.equals("july") || whatMonth.equals("august") || whatMonth.equals("september") || whatMonth.equals("october") || whatMonth.equals("nowember") || whatMonth.equals("december")) {
+
+                            dateI = whatMonth;
+
+                    } else {
+                        System.out.println("Something was spelled wrong..");
+                    }
+
+
+                    System.out.println(dateI);
+
+                    System.out.println("Amount?");
+                    double amountI = scanner.nextDouble();
+                    System.out.println("amount: " + amountI);
+
+                    System.out.println("What category?  Choose between 1-4 ");
+                    //lista av alla enum kategorier
+                    System.out.println("[1] salary \n" +
+                            "[2] sold item \n" +
+                            "[3] second salary \n" +
+                            "[4] other ");
+
+                    //för att minimera risken att input blir fel så printas en lista med alternativ 1-4
+
+                    int chCat = scanner.nextInt();//chooseCategory
+                    String cate = "";//måste ange ett värde annars bråkar rad 217
+
+                    //här har vi en switch som omvandlar user input (Integer) till string då vi använder string i konstruktorn
+                    switch (chCat) {
+                        case 1:
+                            cate = "salary";
+                            break;
+                        case 2:
+                            cate = "sold item";
+                            break;
+                        case 3:
+                            cate = "second salary";
+                            break;
+                        case 4:
+                            cate = "other";
+                            break;
+                        default:
+                            System.out.println("Wrong input, try again");
+                            //här hamnar man om man skriver fel och får en chans till
+
+                    }
+
+
+
+                    Income newIncome = new Income(amountI, dateI, cate); // här skapar vi en ny income. ID genereras automatiskt
+                    incomeStorage.addIncome(newIncome);//add i hashmap
+                    incomeStorage.saveFile();//spara i json
+                    System.out.println("Loading Meny!");
+                    Thread.sleep(1500); // en 1,5 sek paus för skönare flöde i terminalen
+
+                } else if (userAlt == 4) {//add new expense
+
+                    //Expense är likadan som income, här gäller samtliga kommentarer som ovan
+
+
+                    System.out.println("Date? Answer with month\n" +
+                            //här är det viktigt att stava rätt, gör man det så fylls dateI med rätt info annars hamnar man i else och får en chans till
+
+                            "january\n" +
+                            "february\n" +
+                            "mars\n" +
+                            "april\n" +
+                            "may\n" +
+                            "june\n" +
+                            "july\n" +
+                            "august\n" +
+                            "september\n" +
+                            "october\n" +
+                            "november\n" +
+                            "december\n" +
+                            " ");
+
+//String dateI;
+                    //försöker få med alla månader i en rad för att få mindre rader kod
+                    String whatMonth = scanner.nextLine();
+                    whatMonth.toLowerCase();
+                    String dateE = "";
+                    if (whatMonth.equals("january") || whatMonth.equals("february") || whatMonth.equals("mars") || whatMonth.equals("april") || whatMonth.equals("may") || whatMonth.equals("june") || whatMonth.equals("july") || whatMonth.equals("august") || whatMonth.equals("september") || whatMonth.equals("october") || whatMonth.equals("nowember") || whatMonth.equals("december")) {
+
+                        dateE = whatMonth;
+
+                    } else {
+                        System.out.println("Something was spelled wrong..");
+                    }
+
+
+
+
+                    System.out.println("Amount?");
+                    double amountE = scanner.nextDouble();
+                    System.out.println("amount: " + amountE);
+
+                    System.out.println("What category?  Choose between 1-4 ");
+                    //lista av alla enum kategorier
+                    System.out.println("[1] salary \n" +
+                            "[2] sold item \n" +
+                            "[3] second salary \n" +
+                            "[4] other ");
+
+                    //för att minimera risken att input blir fel så printas en lista med alternativ 1-4
+
+                    int chCat = scanner.nextInt(); //chooseCategory
+                    String cate = "";//måste ange ett värde annars bråkar rad 297
+
+                    //här har vi en switch som omvandlar user input (Integer) till string då vi använder string i konstruktorn
+                    switch (chCat) {
+                        case 1:
+                            cate = "electricity";
+                            break;
+                        case 2:
+                            cate = "rent";
+                            break;
+                        case 3:
+                            cate = "fodd";
+                            break;
+                        case 4:
+                            cate = "other";
+                            break;
+                        default:
+                            System.out.println("Wrong input, try again");
+                            //här hamnar man om man skriver fel och får en chans till
+
+                    }
+
+                    Expense newExpense = new Expense(amountE, dateE, cate);
+                    expenseStorage.addExpense(newExpense);
+                    expenseStorage.saveFile();
+                    System.out.println("Loading Meny!");
+                    Thread.sleep(1500); // en 1,5 sek paus för skönare flöde i terminalen
+
+
+                } else if (userAlt == 5) {//remove income
+                    System.out.println("What income do you want to remove? choose by ID");
+                    incomeStorage.listOfIncome();//user får en lista över alla incomes för att välja vilken man vill ta bort
+                    int rId = scanner.nextInt(); //removeId
+                    incomeStorage.removeIncome(rId);
+                    System.out.println("Loading Meny!");
+                    Thread.sleep(1500); // en 1,5 sek paus för skönare flöde i terminalen
+
+                } else if (userAlt == 6) {//remove expense  //samma som incomes
+                    System.out.println("What expense do you want to remove? choose by ID");
+                    expenseStorage.listOfExpense();
+                    int rEd = scanner.nextInt();
+                    expenseStorage.removeExpense(rEd);
+                    System.out.println("Loading Meny!");
+                    Thread.sleep(1500); // en 1,5 sek paus för skönare flöde i terminalen
+
+                } else if (userAlt == 7) {//search income
+                    System.out.println("Search income by ID");
+                    int stIId = scanner.nextInt(); //stIID = stringIncomeID
+                    incomeStorage.searchIncome(stIId); //kallar på metod där man anger ID via stIId
+                    System.out.println("Loading Meny!");
+                    Thread.sleep(1500); // en 1,5 sek paus för skönare flöde i terminalen
+
+                } else if (userAlt == 8) {//search expense //samma som ovan (income)
+                    System.out.println("Search expense");
+                    int stEId = scanner.nextInt(); //stEId = stringExpenseID
+                    expenseStorage.searchExpense(stEId);
+                    System.out.println("Loading Meny!");
+                    Thread.sleep(1500); // en 1,5 sek paus för skönare flöde i terminalen
+
+                } else if (userAlt == 9) {//new user
+                    System.out.println("Creating a new user will delete current user, incomes & expenses.");
+                    System.out.println("What is your first name?");
+                    String fName = scanner.nextLine();
+                    System.out.println("What is your last name?");
+                    String lName = scanner.nextLine();
+                    //fyller i vad den nya usern heter
+                    User newUser = new User(fName, lName); //skapar ny user med den nya infon
+                    newUser.removeUser(); //kallar på metod för att ta bort gamla incomes/expenses
+                    System.out.println("Loading Meny!");
+                    Thread.sleep(1500); // en 1,5 sek paus för skönare flöde i terminalen
+
+                } else if (userAlt == 10) {//See monthly incomes minus expenses
+
+                    System.out.println("Incomes - Expenses = ");
+                    System.out.println(incomeStorage.calcAmount() - expenseStorage.calcAmount()); //räknar ihop incomes och expenses, räknar sedan incomes minus expenses och printar svaret
+                    System.out.println("Loading Meny!");
+                    Thread.sleep(1500); // en 1,5 sek paus för skönare flöde i terminalen
+
+                } else {
+                    System.out.println("Error, please choose an existing alternative!");
+
                 }
-
-
-            } else if (userAlt == 2) {//see monthly expenses
-
-
-
-                System.out.println("What month?\n" +
-
-                        "january\n" +
-                        "february\n" +
-                        "mars\n" +
-                        "april\n" +
-                        "may\n" +
-                        "june\n" +
-                        "july\n" +
-                        "august\n" +
-                        "september\n" +
-                        "october\n" +
-                        "november\n" +
-                        "december\n" +
-                        " ");
-
-                String thisMonth = scanner.nextLine();
-                thisMonth.toLowerCase();
-                if (thisMonth.equals("january") || thisMonth.equals("february") || thisMonth.equals("mars") || thisMonth.equals("april") ||thisMonth.equals("may") || thisMonth.equals("june") ||thisMonth.equals("july") || thisMonth.equals("august") ||thisMonth.equals("september") || thisMonth.equals("october") ||thisMonth.equals("nowember") || thisMonth.equals("december") ){
-
-
-                    expenseStorage.addAmountToMonth(thisMonth);
-                } else{
-                    System.out.println("Something was spelled wrong..");
-                }
-
-
-            } else if (userAlt == 3) {//add new income
-
-                System.out.println("What category?  Choose between 1-4 ");
-                //lista av alla enum kategorier
-                System.out.println("[1] salary \n" +
-                        "[2] sold item \n" +
-                        "[3] second salary \n" +
-                        "[4] other ");
-
-
-                int chCat = scanner.nextInt();
-                String cate = "";//måste ange ett värde annars bråkar rad 159
-                switch (chCat) {
-                    case 1:
-                        cate = "salary";
-                        break;
-
-                    case 2:
-                        cate = "sold item";
-                        break;
-
-                    case 3:
-                        cate = "second salary";
-                        break;
-
-                    case 4:
-                        cate = "other";
-                        break;
-
-                    default:
-                        System.out.println("Wrong input, try again");
-
-
-                }
-
-
-                System.out.println("Amount?");
-                double amountI = scanner.nextDouble();
-                System.out.println("amount: " + amountI);
-
-                System.out.println("Date? Answer with month or year, ex: 'january' or 'year'");
-                String dateI = scanner.next();
-
-                switch (dateI) {
-                    case "january":
-
-                        break;
-
-                    case "february":
-
-                        break;
-                    case "mars":
-
-                        break;
-                    case "april":
-
-                        break;
-                    case "may":
-
-                        break;
-                    case "june":
-
-                        break;
-                    case "july":
-
-                        break;
-                    case "august":
-
-                        break;
-                    case "september":
-
-                        break;
-                    case "october":
-
-                        break;
-                    case "nowember":
-
-                        break;
-                    case "december":
-
-                        break;
-                    case "year":
-
-                        break;
-                    default:
-                        System.out.println("Wrong input, try again");
-                        dateI = scanner.next();
-                }
-                Income newIncome = new Income(amountI, dateI, cate); // fixa auto-id
-                incomeStorage.addIncome(newIncome);
-                incomeStorage.saveFile();
-
-            } else if (userAlt == 4) {//add new expense
-                System.out.println("What category?");
-                //lista av alla enum
-                System.out.println("electricity \n" +
-                        "sold item\n" +
-                        "food\n" +
-                        "other ");
-
-                String exCat;
-                exCat = scanner.nextLine();
-
-                switch (exCat) {
-                    case "electricity":
-                        exCat = "electricity";
-                        break;
-
-                    case "sold item":
-                        exCat = "sold item";
-                        break;
-
-                    case "food":
-                        exCat = "food";
-                        break;
-
-                    case "other":
-                        exCat = "other";
-                        break;
-
-                    default:
-                        System.out.println("Wrong input, try again");
-                        exCat = scanner.next();
-
-
-                }
-
-                System.out.println("Amount?");
-                double amountE = scanner.nextDouble();
-                System.out.println("Date? Answer with month. If this inomce reapeats all year around, simply type: year   ex: 'january' or 'year'");
-                String dateE = scanner.nextLine();
-
-                switch (dateE) {
-                    case "january":
-                        dateE = "january";
-                        break;
-
-                    case "february":
-                        dateE = "february";
-                        break;
-                    case "mars":
-                        dateE = "mars";
-                        break;
-                    case "april":
-                        dateE = "january";
-                        break;
-                    case "may":
-                        dateE = "january";
-                        break;
-                    case "june":
-                        dateE = "january";
-                        break;
-                    case "july":
-                        dateE = "january";
-                        break;
-                    case "august":
-                        dateE = "january";
-                        break;
-                    case "september":
-                        dateE = "january";
-                        break;
-                    case "october":
-                        dateE = "january";
-                        break;
-                    case "nowember":
-                        dateE = "january";
-                        break;
-                    case "december":
-                        dateE = "january";
-                        break;
-                    case "year":
-                        dateE = "year";
-                        break;
-                    default:
-                        System.out.println("Wrong input, try again");
-                        dateE = scanner.next();
-
-
-                }
-                Expense newExpense = new Expense(amountE, dateE, exCat);
-                expenseStorage.addExpense(newExpense);
-                expenseStorage.saveFile();
-
-
-            } else if (userAlt == 5) {//remove income
-                System.out.println("What income do you want to remove? choose by ID");
-                incomeStorage.listOfIncome();
-                int rId = scanner.nextInt();
-
-                incomeStorage.removeIncome(rId);
-
-            } else if (userAlt == 6) {//remove expense
-                System.out.println("What expense do you want to remove? choose by ID");
-                expenseStorage.listOfExpense();
-                int rEd = scanner.nextInt();
-                incomeStorage.removeIncome(rEd);
-
-            } else if (userAlt == 7) {//search income
-                System.out.println("Search income by ID");
-                incomeStorage.listOfIncome();
-                int stIId = scanner.nextInt(); //stIID = stringIncomeID
-                incomeStorage.searchIncome(stIId);
-
-            } else if (userAlt == 8) {//search expense
-                System.out.println("Search expense");
-                int stEId = scanner.nextInt(); //stEId = stringExpenseID
-                expenseStorage.searchExpense(stEId);
-
-            } else if (userAlt == 9) {//new user
-                System.out.println("Creating a new user will delete current user, incomes & expenses.");
-                //sout "this will delete your already existing user"
-                System.out.println("What is your first name?");
-                String fName = scanner.nextLine();
-                System.out.println("What is your last name?");
-                String lName = scanner.nextLine();
-                User newUser = new User(fName, lName);
-                newUser.removeUser();
-
-
-            } else if (userAlt == 10) {//See monthly incomes minus expenses
-
-                System.out.println("Incomes - Expenses = ");
-                System.out.println(incomeStorage.calcAmount() - expenseStorage.calcAmount());
+            } catch (NumberFormatException nfe) { //catch eftersom vi har Integer.parseint så hamnar man här om man skriver en bokstav
+                System.out.println("Wrong input, only numbers allowed!");
                 Thread.sleep(1500); // en 1,5 sek paus för skönare flöde i terminalen
-
-            } else {
-                System.out.println("Error, please choose an existing alternative!");
-
             }
+
         }
 
     }
