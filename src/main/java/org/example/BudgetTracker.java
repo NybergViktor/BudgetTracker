@@ -59,6 +59,8 @@ public class BudgetTracker {
                 if (userAlt == 0) {
                     //exit program
                     System.out.println("Bye Bye!");
+                    incomeStorage.saveFile();
+                    expenseStorage.saveFile();
                     running = false;
                     break;
                 } else if (userAlt == 1) {

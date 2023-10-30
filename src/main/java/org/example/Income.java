@@ -1,7 +1,7 @@
 package org.example;
 
 public class Income extends Transaction { //ärver från transaction och använder amount, month och lägger till
-    // eget som hör till income. som ID och category ihop med Enum category
+    // eget som hör till income. som ID och category ihop med Enum category. //här anger vi amount och month för income och inte transaction. vi ärver och override. polymorfism
 
     private EIncomeCategory category;
 
@@ -39,7 +39,7 @@ public class Income extends Transaction { //ärver från transaction och använd
 
 
     @Override
-    public String toString() {//toString för att kunna printa hashmap med info istället för hashmap
+    public String toString() {//toString för att kunna printa hashmap med info istället för hashmap. overridar också toString (polymorfism)
         return super.toString() + " ID: " + getNewId() + ", Category: " + getCategory() +
                 '}';
     }

@@ -14,7 +14,7 @@ public class Expense extends Transaction { //ärver från transaction och använ
     private static int newId;
 
     public Expense(double amount, String month, String category) {
-        super(amount, month);
+        super(amount, month); //här anger vi amount och month för income och inte transaction. vi ärver och override. polymorfism
         newId++;
 
         switch (category) {//ange category (ENUM) från user input
@@ -35,7 +35,7 @@ public class Expense extends Transaction { //ärver från transaction och använ
     }
 
     @Override
-    public String toString() { //toString för att kunna printa hashmap med info istället för hashmap
+    public String toString() { //toString för att kunna printa hashmap med info istället för hashmap. overridar också toString (polymorfism)
         return super.toString() + " ID: " + getNewId() + " Category: " + getCategory();
     }
 
