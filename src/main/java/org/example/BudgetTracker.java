@@ -242,7 +242,7 @@ public class BudgetTracker {
                             "december\n" +
                             " ");
 
-//String dateI;
+
                     //försöker få med alla månader i en rad för att få mindre rader kod
                     String whatMonth = scanner.nextLine();
                     whatMonth.toLowerCase();
